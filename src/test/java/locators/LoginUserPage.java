@@ -1,6 +1,5 @@
 package locators;
 
-import jdk.jshell.spi.SPIResolutionException;
 import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +14,8 @@ public class LoginUserPage {
     private final By loginButton = By.xpath("//button[text()='Войти']");
     private final By forgotPasswordLoginButton = By.xpath("//a[text()='Войти']");
 
+    private final By loadingOverlay = By.className("Modal_modal_overlay__x2ZCr");
+
     public LoginUserPage(WebDriver driver){
         this.driver = driver;
     }
@@ -22,6 +23,11 @@ public class LoginUserPage {
     public void waitPageLoad(){
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(loginButton));
+        var overlay = driver.findElement(loadingOverlay);
+        if (overlay != null) {
+            new WebDriverWait(driver, 3).until(ExpectedConditions.invisibilityOf(overlay));
+        }
+        new WebDriverWait(driver, 1);
     }
 
     public void fillParams(User user){
@@ -34,6 +40,8 @@ public class LoginUserPage {
     }
 
     public void clickLoginUrlFromForgotPassword(){
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(forgotPasswordLoginButton));
         driver.findElement(forgotPasswordLoginButton).click();
     }
 }

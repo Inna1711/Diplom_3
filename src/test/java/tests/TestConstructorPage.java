@@ -60,6 +60,7 @@ public class TestConstructorPage {
     @Description("Open buns clicking sauces button and then buns label button")
     public void testOpenBuns(){
         var constructorPOM = new ConstructorPage(driver);
+        constructorPOM.isPageOpened();
         clickOtherButton();
         constructorPOM.clickBunsButton();
         assertFalse("Sauces shouldn't be selected", constructorPOM.isSaucesButtonSelected());
@@ -72,6 +73,7 @@ public class TestConstructorPage {
     @Description("Open sauces clicking sauces label button")
     public void testOpenSauces(){
         var constructorPOM = new ConstructorPage(driver);
+        constructorPOM.isPageOpened();
         constructorPOM.clickSaucesButton();
 
         assertTrue("Sauces should be selected", constructorPOM.isSaucesButtonSelected());
@@ -84,6 +86,7 @@ public class TestConstructorPage {
     @Description("Open ingredients clicking ingredients label button")
     public void testOpenIngredients(){
         var constructorPOM = new ConstructorPage(driver);
+        constructorPOM.isPageOpened();
         constructorPOM.clickIngredientsButton();
 
         assertFalse("Sauces shouldn't be selected", constructorPOM.isSaucesButtonSelected());

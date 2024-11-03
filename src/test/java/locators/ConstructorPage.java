@@ -14,6 +14,8 @@ public class ConstructorPage {
     private final By saucesButton = By.xpath("//span[text()='Соусы']//parent::div");
     private final By ingredientsButton = By.xpath("//span[text()='Начинки']//parent::div");
 
+    private final By loadingOverlay = By.className("Modal_modal_overlay__x2ZCr");
+
     public ConstructorPage(WebDriver driver){
         this.driver = driver;
     }
@@ -21,6 +23,11 @@ public class ConstructorPage {
     public void isPageOpened(){
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(testElement));
+
+        var overlay = driver.findElement(loadingOverlay);
+        if (overlay != null) {
+            new WebDriverWait(driver, 3).until(ExpectedConditions.invisibilityOf(overlay));
+        }
     }
 
     private boolean isButtonSelected(By button){

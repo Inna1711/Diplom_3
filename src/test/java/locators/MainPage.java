@@ -12,8 +12,20 @@ public class MainPage {
     private final By userAccount = By.xpath("//p[text()='Личный Кабинет']//parent::a");
     private final By orderButton = By.xpath("//button[text()='Оформить заказ']");
 
+    private final By loadingOverlay = By.className("Modal_modal_overlay__x2ZCr");
+
     public MainPage(WebDriver driver){
         this.driver = driver;
+    }
+
+    public void checkIfMainPageLoaded() {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.elementToBeClickable(userAccount));
+        var overlay = driver.findElement(loadingOverlay);
+        if (overlay != null) {
+            new WebDriverWait(driver, 3).until(ExpectedConditions.invisibilityOf(overlay));
+        }
+        new WebDriverWait(driver, 3);
     }
 
     public void clickLoginButton(){

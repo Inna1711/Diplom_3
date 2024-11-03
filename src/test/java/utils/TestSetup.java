@@ -14,7 +14,8 @@ public class TestSetup {
             options.setBinary("C:\\Program Files (x86)\\Yandex\\YandexBrowser\\Application\\browser.exe");
         }
         else if (webBrowser.equals(Constants.CHROME_BROWSER)){
-            options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+            options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+            options.setBinary("C:\\chrome-distr\\chrome.exe");
         }
         WebDriver driver =  new ChromeDriver(options);
         driver.get(url);

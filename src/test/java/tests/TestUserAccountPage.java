@@ -75,6 +75,7 @@ public class TestUserAccountPage {
         driver.get(Constants.MAIN_PAGE);
         var mainPOM = new MainPage(driver);
         var userAccountPOM = new UserAccountPage(driver);
+        mainPOM.checkIfMainPageLoaded();
         mainPOM.clickUserAccount();
         userAccountPOM.checkAccountLoaded();
     }
@@ -87,6 +88,7 @@ public class TestUserAccountPage {
         var mainPOM = new MainPage(driver);
         var userAccountPOM = new UserAccountPage(driver);
         var constructorPOM = new ConstructorPage(driver);
+        mainPOM.checkIfMainPageLoaded();
         mainPOM.clickUserAccount();
         userAccountPOM.checkAccountLoaded();
         userAccountPOM.openConstructorPageWithLabel();
@@ -101,6 +103,7 @@ public class TestUserAccountPage {
         var mainPOM = new MainPage(driver);
         var userAccountPOM = new UserAccountPage(driver);
         var constructorPOM = new ConstructorPage(driver);
+        mainPOM.checkIfMainPageLoaded();
         mainPOM.clickUserAccount();
         userAccountPOM.checkAccountLoaded();
         userAccountPOM.openConstructorPageWithIcon();
@@ -115,6 +118,7 @@ public class TestUserAccountPage {
         var mainPOM = new MainPage(driver);
         var userAccountPOM = new UserAccountPage(driver);
         var userLoginPOM = new LoginUserPage(driver);
+        mainPOM.checkIfMainPageLoaded();
         mainPOM.clickUserAccount();
         userAccountPOM.checkAccountLoaded();
         userAccountPOM.clickLogoutPage();

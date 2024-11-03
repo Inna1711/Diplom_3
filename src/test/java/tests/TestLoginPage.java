@@ -90,6 +90,7 @@ public class TestLoginPage {
     @Description("Test login from Main page button")
     public void testUserLoginWithMainLoginButton(){
         var mainPOM = new MainPage(driver);
+        mainPOM.checkIfMainPageLoaded();
         mainPOM.clickLoginButton();
         checkIfPageOpened();
         loginUser();
@@ -101,6 +102,7 @@ public class TestLoginPage {
     @Description("Test login from Main page with account button")
     public void testUserLoginWithUserAccountButton(){
         var mainPOM = new MainPage(driver);
+        mainPOM.checkIfMainPageLoaded();
         mainPOM.clickUserAccount();
         checkIfPageOpened();
         loginUser();

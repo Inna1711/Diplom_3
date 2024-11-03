@@ -14,6 +14,8 @@ public class UserAccountPage {
     private final By constructorPage = By.xpath("//p[text()='Конструктор']//parent::a");
     private final By logoPage = By.className("AppHeader_header__logo__2D0X2");
 
+    private final By loadingOverlay = By.className("Modal_modal_overlay__x2ZCr");
+
     public UserAccountPage(WebDriver driver){
         this.driver = driver;
     }
@@ -23,6 +25,11 @@ public class UserAccountPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(userName));
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(userEmail));
+
+        var overlay = driver.findElement(loadingOverlay);
+        if (overlay != null) {
+            new WebDriverWait(driver, 3).until(ExpectedConditions.invisibilityOf(overlay));
+        }
     }
 
     public void openConstructorPageWithLabel(){
