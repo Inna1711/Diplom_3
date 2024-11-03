@@ -42,7 +42,7 @@ public class TestRegisterPage {
         };
     }
 
-    @Step("Create user!")
+    @Step("Create user")
     private void createUser(RegisterUserPage registerUserPOM){
         registerUserPOM.clickRegisterButton();
     }

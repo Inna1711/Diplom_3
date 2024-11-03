@@ -1,11 +1,15 @@
 package models;
 
 public class Constants {
+    public static final String BASE_URL = "https://stellarburgers.nomoreparties.site";
+
     public static final String USER_CREATE_ROUTE = "api/auth/register";
     public static final String USER_LOGIN_ROUTE = "api/auth/login";
     public static final String USER_ROUTE = "api/auth/user";
 
+    public static final String MAIN_PAGE = "https://stellarburgers.nomoreparties.site";
     public static final String REGISTER_PAGE_URL = "https://stellarburgers.nomoreparties.site/register";
+    public static final String FORGOT_PASSWORD_PAGE = "https://stellarburgers.nomoreparties.site/forgot-password";
 
     public static final String YANDEX_BROWSER = "yandex";
     public static final String CHROME_BROWSER = "chrome";

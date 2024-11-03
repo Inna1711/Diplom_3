@@ -1,5 +1,6 @@
 package locators;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,10 +13,18 @@ public class RegisterUserPage {
     private final By emailSelect = By.xpath("//label[text()='Email']//parent::div/input");
     private final By passwordSelect = By.xpath("//input[@name='Пароль']");
     private final By registerUser = By.xpath("//button[text()='Зарегистрироваться']");
+    private final By loginButton = By.xpath("//a[text()='Войти']");
     private final By successButton = By.xpath("//button[text()='Войти']");
+
 
     public RegisterUserPage(WebDriver driver){
         this.driver = driver;
+    }
+
+    public void fillParams(User user){
+        driver.findElement(loginSelect).sendKeys(user.getName());
+        driver.findElement(emailSelect).sendKeys(user.getEmail());
+        driver.findElement(passwordSelect).sendKeys(user.getPassword());
     }
 
     public void setLogin(String login){
@@ -32,6 +41,10 @@ public class RegisterUserPage {
 
     public void clickRegisterButton(){
         driver.findElement(registerUser).click();
+    }
+
+    public void clickLoginButton(){
+        driver.findElement(loginButton).click();
     }
 
     public boolean isRegistered(){
