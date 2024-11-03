@@ -18,4 +18,6 @@ public class Constants {
     public static final String TEST_USER_EMAIL = "test@example.ru";
     public static final String TEST_USER_CORRECT_PASSWORD = "testPassword!123";
     public static final String TEST_USER_INCORRECT_PASSWORD = "bip";
+
+    public static final String SELECTED_CLASS_ATTRIBUTE = "tab_tab_type_current__2BEPc";
 }

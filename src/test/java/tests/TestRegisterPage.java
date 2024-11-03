@@ -1,8 +1,8 @@
 package tests;
 
-import fixtures.ApiFixture;
-import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import locators.RegisterUserPage;
 import models.Constants;
 import org.junit.After;
@@ -26,7 +26,6 @@ public class TestRegisterPage {
 
     @Before
     public void setUp(){
-
         this.driver = TestSetup.setupDriver(Constants.REGISTER_PAGE_URL, browserName);
     }
 
@@ -48,7 +47,9 @@ public class TestRegisterPage {
     }
 
     @Test
-    public void TestCorrectUserRegister(){
+    @DisplayName("Register correct user")
+    @Description("Test register user with correct data")
+    public void testCorrectUserRegister(){
         var registerUserPOM = new RegisterUserPage(driver);
         registerUserPOM.setLogin(Constants.TEST_USER_NANE);
         registerUserPOM.setEmail(Constants.TEST_USER_EMAIL);
@@ -57,7 +58,9 @@ public class TestRegisterPage {
     }
 
     @Test
-    public void TestIncorrectUserRegister(){
+    @DisplayName("Register incorrect user")
+    @Description("Test register user with incorrect data")
+    public void testIncorrectUserRegister(){
         var registerUserPOM = new RegisterUserPage(driver);
         registerUserPOM.setLogin(Constants.TEST_USER_NANE);
         registerUserPOM.setEmail(Constants.TEST_USER_EMAIL);

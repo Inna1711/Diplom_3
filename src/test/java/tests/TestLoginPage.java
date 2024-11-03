@@ -1,7 +1,9 @@
 package tests;
 
 import fixtures.ApiFixture;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import locators.LoginUserPage;
 import locators.MainPage;
@@ -10,7 +12,6 @@ import models.Constants;
 import models.User;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,7 +22,7 @@ import utils.TestSetup;
 @RunWith(Parameterized.class)
 public class TestLoginPage {
     private WebDriver driver;
-    private String browserName;
+    private final String  browserName;
     private final User testUser = new User(Constants.TEST_USER_NANE, Constants.TEST_USER_EMAIL, Constants.TEST_USER_CORRECT_PASSWORD);
 
     @Before
@@ -42,6 +43,12 @@ public class TestLoginPage {
     public void deleteUser(){
         ApiFixture.deleteUser(testUser);
     }
+    
+    @After
+    public void cleanup(){
+        driver.quit();
+    }
+
 
     @Step("Check if page is opened")
     private void checkIfPageOpened(){
@@ -79,6 +86,8 @@ public class TestLoginPage {
     }
 
     @Test
+    @DisplayName("Test login from Main page")
+    @Description("Test login from Main page button")
     public void testUserLoginWithMainLoginButton(){
         var mainPOM = new MainPage(driver);
         mainPOM.clickLoginButton();
@@ -88,6 +97,8 @@ public class TestLoginPage {
     }
 
     @Test
+    @DisplayName("Test login from Account button")
+    @Description("Test login from Main page with account button")
     public void testUserLoginWithUserAccountButton(){
         var mainPOM = new MainPage(driver);
         mainPOM.clickUserAccount();
@@ -97,6 +108,8 @@ public class TestLoginPage {
     }
 
     @Test
+    @DisplayName("Test login from Registration form")
+    @Description("Test login from Registration form with login button")
     public void testUserLoginWithRegisterForm(){
         driver.get(Constants.REGISTER_PAGE_URL);
         var registerPOM = new RegisterUserPage(driver);
@@ -107,6 +120,8 @@ public class TestLoginPage {
     }
 
     @Test
+    @DisplayName("Test login from forgot password form")
+    @Description("Test login from forgot password form with login button")
     public void testUserLoginWithForgotPassword(){
         driver.get(Constants.FORGOT_PASSWORD_PAGE);
         var loginPOM = new LoginUserPage(driver);
