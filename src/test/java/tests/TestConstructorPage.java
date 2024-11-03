@@ -1,6 +1,8 @@
 package tests;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import locators.ConstructorPage;
 import models.Constants;
 import org.junit.After;
@@ -54,6 +56,8 @@ public class TestConstructorPage {
     }
 
     @Test
+    @DisplayName("Test buns from label button")
+    @Description("Open buns clicking sauces button and then buns label button")
     public void testOpenBuns(){
         var constructorPOM = new ConstructorPage(driver);
         clickOtherButton();
@@ -64,6 +68,8 @@ public class TestConstructorPage {
     }
 
     @Test
+    @DisplayName("Test sauces from label button")
+    @Description("Open sauces clicking sauces label button")
     public void testOpenSauces(){
         var constructorPOM = new ConstructorPage(driver);
         constructorPOM.clickSaucesButton();
@@ -74,6 +80,8 @@ public class TestConstructorPage {
     }
 
     @Test
+    @DisplayName("Test ingredients from label button")
+    @Description("Open ingredients clicking ingredients label button")
     public void testOpenIngredients(){
         var constructorPOM = new ConstructorPage(driver);
         constructorPOM.clickIngredientsButton();
