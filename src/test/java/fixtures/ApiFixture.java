@@ -9,8 +9,8 @@ import static io.restassured.RestAssured.given;
 
 public class ApiFixture {
 
-    public static io.restassured.response.Response createUserHandler(User userData){
-        return  given().
+    public static void createUserHandler(User userData){
+        given().
                 header("Content-type", "application/json").
                 body(userData).
                 post(Constants.USER_CREATE_ROUTE);
