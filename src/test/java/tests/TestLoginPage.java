@@ -13,22 +13,18 @@ import models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import utils.TestSetup;
 
 
-@RunWith(Parameterized.class)
 public class TestLoginPage {
     private WebDriver driver;
-    private final String  browserName;
     private final User testUser = new User(Constants.TEST_USER_NANE, Constants.TEST_USER_EMAIL, Constants.TEST_USER_CORRECT_PASSWORD);
 
     @Before
     public void setUp(){
         RestAssured.baseURI = Constants.BASE_URL;
-        this.driver = TestSetup.setupDriver(Constants.MAIN_PAGE, browserName);
+        this.driver = TestSetup.setupDriver(Constants.MAIN_PAGE);
     }
 
     @Before
@@ -67,22 +63,6 @@ public class TestLoginPage {
     public void isLoggedIn(){
         var mainPOM = new MainPage(driver);
         mainPOM.checkIfLoggedIn();
-    }
-
-    @Parameterized.Parameters
-    public static String[][] initializeTest(){
-        return new String[][] {
-                {
-                        "yandex"
-                },
-                {
-                        "chrome"
-                }
-        };
-    }
-
-    public TestLoginPage(String browserName){
-        this.browserName = browserName;
     }
 
     @Test

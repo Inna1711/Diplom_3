@@ -45,7 +45,7 @@ public class RegisterUserPage {
         if (overlay != null) {
             new WebDriverWait(driver, 3).until(ExpectedConditions.invisibilityOf(overlay));
         }
-        new WebDriverWait(driver, 1);
+        new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(loginButton));
         driver.findElement(loginButton).click();
     }
 

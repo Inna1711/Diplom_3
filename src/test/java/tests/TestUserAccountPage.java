@@ -11,16 +11,12 @@ import models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import utils.TestSetup;
 
 
-@RunWith(Parameterized.class)
 public class TestUserAccountPage {
     private WebDriver driver;
-    private final String browserName;
     private final User testUser = new User(Constants.TEST_USER_NANE, Constants.TEST_USER_EMAIL, Constants.TEST_USER_CORRECT_PASSWORD);
 
 
@@ -29,7 +25,7 @@ public class TestUserAccountPage {
     public void createUser(){
         RestAssured.baseURI = Constants.BASE_URL;
         ApiFixture.createUserHandler(testUser);
-        this.driver = TestSetup.setupDriver(Constants.MAIN_PAGE, browserName);
+        this.driver = TestSetup.setupDriver(Constants.MAIN_PAGE);
         var loginPOM = new LoginUserPage(driver);
         var mainPOM = new MainPage(driver);
         driver.get(Constants.MAIN_PAGE);
@@ -51,22 +47,6 @@ public class TestUserAccountPage {
         driver.quit();
     }
 
-
-    @Parameterized.Parameters
-    public static String[][] initializeTest(){
-        return new String[][] {
-                {
-                        "yandex"
-                },
-                {
-                        "chrome"
-                }
-        };
-    }
-
-    public TestUserAccountPage(String browserName){
-        this.browserName = browserName;
-    }
 
     @Test
     @DisplayName("Open user account page")

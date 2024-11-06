@@ -8,8 +8,6 @@ import models.Constants;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import utils.TestSetup;
 
@@ -17,35 +15,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
-@RunWith(Parameterized.class)
 public class TestConstructorPage {
     private WebDriver driver;
-    private final String browserName;
 
     @Before
     public void setUp(){
-        this.driver = TestSetup.setupDriver(Constants.MAIN_PAGE, browserName);
+        this.driver = TestSetup.setupDriver(Constants.MAIN_PAGE);
     }
 
-    @Parameterized.Parameters
-    public static String[][] initializeTest(){
-        return new String[][] {
-                {
-                        "yandex"
-                },
-                {
-                        "chrome"
-                }
-        };
-    }
 
     @After
     public void cleanup(){
         driver.quit();
-    }
-
-    public TestConstructorPage(String browserName){
-        this.browserName = browserName;
     }
 
     @Step("Clicking other button from buns")

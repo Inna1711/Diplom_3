@@ -8,37 +8,17 @@ import models.Constants;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import utils.TestSetup;
 
 import static org.junit.Assert.assertFalse;
 
-@RunWith(Parameterized.class)
 public class TestRegisterPage {
     private WebDriver driver;
-    private final String browserName;
-
-    public TestRegisterPage(String browserName){
-        this.browserName = browserName;
-    }
 
     @Before
     public void setUp(){
-        this.driver = TestSetup.setupDriver(Constants.REGISTER_PAGE_URL, browserName);
-    }
-
-    @Parameterized.Parameters
-    public static String[][] initializeTest(){
-        return new String[][] {
-                {
-                    "yandex"
-                },
-                {
-                    "chrome"
-                }
-        };
+        this.driver = TestSetup.setupDriver(Constants.REGISTER_PAGE_URL);
     }
 
     @Step("Create user")

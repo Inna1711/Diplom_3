@@ -11,6 +11,9 @@ public class Constants {
     public static final String REGISTER_PAGE_URL = "https://stellarburgers.nomoreparties.site/register";
     public static final String FORGOT_PASSWORD_PAGE = "https://stellarburgers.nomoreparties.site/forgot-password";
 
+    public static final String BROWSER_NAME_ENV_NAME = "BROWSER_NAME";
+    public static final String BROWSER_EXECUTABLE_ENV_NAME = "BROWSER_EXECUTABLE_PATH";
+
     public static final String YANDEX_BROWSER = "yandex";
     public static final String CHROME_BROWSER = "chrome";
 
